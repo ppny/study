@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="test1">测试</p>
+     <script>
+     	var p1 = document.getElementById('test1');
+	    p1.addEventListener('click', () => {
+	    	//console.log("箭头函数this指向",this)
+	        p1.style.color = "red";
+	    }, false);
+	    p1.addEventListener('mouseover',function(){
+	    	//console.log("普通函数this",this)
+	    }, false);                                                                            
+
+	    function foo(){
+	    	()=>{
+	    		console.log(this)
+	    	}
+	    }
+	    foo.call(p1)
+
+	    var curry = function (fn) {
+	    	console.log('fn',fn)
+		    var args = [].slice.call(arguments, 1);
+		    console.log("args",args)
+		    return function() {
+		        var newArgs = args.concat([].slice.call(arguments));
+		        console.log('newArgs',newArgs)
+		        return fn.apply(this, newArgs);
+		    };
+		};
+
+		function add(a, b) {
+		    return a + b;
+		}
+
+		//var addCurry = curry(add, 1, 2);
+		//addCurry() // 3
+		//或者
+		var addCurry = curry(add, 1);
+		console.log('addCurry',addCurry)
+		addCurry(2) // 3
+		console.log(addCurry(2))
+		//或者
+		//var addCurry = curry(add);
+		//addCurry(1, 2) // 3
+		//
+		function sub(1,b){
+			console.log(b-1)
+		}
+
+		
+	</script>
+</body>
+</html>
