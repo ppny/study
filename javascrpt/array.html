@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的方法</title>
+</head>
+<a href="http://zmall.oss-cn-hangzhou.aliyuncs.com/zebra_api%2F2017%2F08%2F29%2F132044%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E8%A1%A8.rar" download="filename.zip">点击下载</a>
+<a href="http://zmall.oss-cn-hangzhou.aliyuncs.com/zebra_api%2F2017%2F08%2F29%2F132044%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E8%A1%A8.rar" download="filename55555555555555555.zip">Download file</a>
+<body>
+	<script>
+		var arr = [2,4,6,8,10]
+		//map() “映射”,对数组中得每一项运行给定函数，返回每次函数调用的结果组成的数组。
+		var arrMap = arr.map(function(item,index){
+			return item * item
+		})
+		console.log("arrMap",arrMap) //[4,16,36,64,100]
+
+		//filter() "过滤"功能，数组中得每一项运行给定函数，返回满足过滤条件组成的数组。
+		var arrFilter = arr.filter(function(item,index){
+			return item != 4
+		})
+		console.log("arrFilter",arrFilter)
+
+		//every()判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true。
+		var arrEvery = arr.every(function(item){
+			return item < 100
+		})
+		console.log("arrEvery",arrEvery)
+
+		//some()：判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true。
+		var arrSome = arr.some(function(item){
+			return item < 7
+		})
+		console.log('arrSome',arrSome)
+
+		//reduce()
+		var arrReduce = arr.reduce(function(prev,cur,index,arr){
+			return prev * cur
+		},10)
+		console.log("arrReduce",arrReduce)
+
+		//reduceRight()
+		var arrreduceRight = arr.reduceRight(function(prev,cur,index,arr){
+			return prev * cur
+		},10)
+		console.log("arrreduceRight",arrreduceRight)
+	</script>
+</body>
+</html>

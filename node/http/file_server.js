@@ -8,12 +8,13 @@ var
 
 // 从命令行参数获取root目录，默认是当前目录:
 var root = path.resolve(process.argv[2] || '.');
-console.log(process.argv)
+
 console.log('Static root dir: ' + root);
 
 // 创建服务器:
 var server = http.createServer(function (request, response) {
     // 获得URL的path，类似 '/css/bootstrap.css':
+    console.log(request.url)
     var pathname = url.parse(request.url).pathname;
     // 获得对应的本地文件路径，类似 '/srv/www/css/bootstrap.css':
     var filepath = path.join(root, pathname);
