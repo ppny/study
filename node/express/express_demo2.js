@@ -1,3 +1,9 @@
+
+//路由
+//我们已经了解了 HTTP 请求的基本应用，而路由决定了由谁(指定脚本)去响应客户端请求。
+//在HTTP请求中，我们可以通过路由提取出请求的URL以及GET/POST参数。
+
+
 var express = require('express');
 var app = express();
  
