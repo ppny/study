@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="GET">
+        First Name: <input type="text" name="first_name" id="username">  <br>
+        Last Name: <input type="text" name="last_name" id="content">
+        <input type="submit" value="Submit" id="submit">
+    </form>
+</body>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script>
+    $("#submit").on("click",function(e){
+        e.preventDefault()
+        console.log("!!!!!!!!!!1")
+        $.ajax({
+             type: "GET",
+             url: "http://localhost:8081/process_get",
+             data: {name:$("#username").val(), url:$("#content").val(),country:$("#content").val(),alexa:$("#content").val()},
+             dataType: "json",
+             success: function(data){
+                $('#resText').empty();   //清空resText里面的所有内容
+                var html = ''; 
+                $.each(data, function(commentIndex, comment){
+                    html += '<div class="comment"><h6>' + comment['username']
+                                + ':</h6><p class="para"' + comment['content']
+                                + '</p></div>';
+                });
+                $('#resText').html(html);
+            }
+         });
+    })
+</script>
+</html>
