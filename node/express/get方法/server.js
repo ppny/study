@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 
 app.use(express.static('public'));
-
 app.get('/index.html',function(req,res){
+    //res.sendFile(path [，options] [，fn])：传送指定路径的文件 -会自动根据文件extension设定Content-Type
     res.sendFile(__dirname + "/" + "index.html");
 })
 
