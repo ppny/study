@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		function Person(){
+			this.name = "wang"
+		}
+		Person.prototype.name = "Nicholas";
+		Person.prototype.age = 29;
+		Person.prototype.job = "Software Engineer";
+		Person.prototype.sayName = function(){
+			alert(this.name);
+		};
+		console.log('Person.prototype.constructor',Person.prototype.constructor) //Person构造函数的原型的contrustor指向构造函数自己
+		var person1 = new Person()
+		console.log('Person.prototype',Person.prototype)//指向构造函数的原型对象，包含constructor属性和__proto__属性
+		console.log('Person.__proto__',Person.__proto__)
+		console.log('Person.prototype.__proto__',Person.prototype.__proto__)//指向原型链中上一级的构造函数的原型
+		console.log('Person.prototype.prototype',Person.prototype.prototype)//构造函数的prototype是一个对象，不是构造函数，构造函数才有prototype属性
+		console.log('person1.constructor',person1.constructor)//
+		console.log('person1.prototype',person1.prototype)//实例对象没prototype属性
+		console.log('person1.__proto__',person1.__proto__)//指向实例化该对象的构造函数的prototype
+
+		function ChildrenPerson(){
+		}
+
+		ChildrenPerson.prototype = new Person()//继承了Person
+
+		console.log('ChildrenPerson.prototype',ChildrenPerson.prototype)//指向构造函数Person
+		console.log('ChildrenPerson.prototype.__proto__',ChildrenPerson.prototype.__proto__)//指向所继承对象Person的原型prototype (=== Person.prototype)
+		console.log('ChildrenPerson.__proto__',ChildrenPerson.__proto__)
+		var children1 = new ChildrenPerson()
+		console.log('children1.__proto__',children1.__proto__)//执行ChildrenPerson的prototype
+		console.log(ChildrenPerson.prototype.__proto__ === Person.prototype)
+
+		//原型链
+		//ChildrenPerson.prototype -> Person.prototype -> Object.prototype
+		//children1.__proto__ -> ChildrenPerson.prototype.__ptoto ->Person.prototype.__proto -> Object.prototype
+	</script>
+</body>
+</html>
